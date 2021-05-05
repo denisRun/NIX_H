@@ -1,0 +1,7 @@
+D:\nixHome\Home3Students\bin\Debug\Home3.exe.config
+D:\nixHome\Home3Students\bin\Debug\Home3.exe
+D:\nixHome\Home3Students\bin\Debug\Home3.pdb
+D:\nixHome\Home3Students\obj\Debug\Home3.csprojAssemblyReference.cache
+D:\nixHome\Home3Students\obj\Debug\Home3.csproj.CoreCompileInputs.cache
+D:\nixHome\Home3Students\obj\Debug\Home3.exe
+D:\nixHome\Home3Students\obj\Debug\Home3.pdb
