@@ -1,0 +1,53 @@
+1. SELECT TOP(1) Products.ProductName FROM dbo.Products
+INNER JOIN dbo.Categories on Categories.CategoryID=Products.CategoryID
+WHERE Categories.CategoryID=1
+ORDER BY UnitPrice DESC
+
+2.SELECT DISTINCT Customers.City FROM dbo.Customers
+INNER JOIN dbo.Orders ON Customers.CustomerID=Orders.CustomerID
+WHERE DATEDIFF(day, Orders.OrderDate, RequiredDate)>10;
+
+3.SELECT DISTINCT Customers.ContactName FROM dbo.Customers
+INNER JOIN dbo.Orders ON Customers.CustomerID=Orders.CustomerID
+WHERE Orders.ShippedDate is NULL;
+
+4.SELECT COUNT(DISTINCT Orders.CustomerID) FROM dbo.Orders
+WHERE EmployeeID IN (SELECT TOP(1) Orders.EmployeeID FROM Orders
+GROUP BY EmployeeID
+ORDER BY  COUNT(OrderID) DESC)
+
+5.SELECT COUNT( Customers.City) FROM dbo.Customers
+INNER JOIN dbo.Orders ON Customers.CustomerID=Orders.CustomerID
+WHERE Customers.Country='France' and Orders.EmployeeID=1 and YEAR(OrderDate)=1997
+
+6.SELECT DISTINCT Country FROM Orders
+INNER JOIN Customers ON Customers.CustomerID=Orders.CustomerID
+GROUP BY Country, City
+HAVING COUNT(OrderID)>2
+
+7.SELECT DISTINCT ProductName,SUM(Quantity) FROM dbo.Products
+INNER JOIN dbo.[Order Details] ON Products.ProductID=[Order Details].ProductID
+GROUP BY ProductName
+HAVING SUM(Quantity)<1000
+
+8.SELECT DISTINCT Customers.CompanyName FROM dbo.Customers
+INNER JOIN dbo.Orders ON Customers.CustomerID=Orders.CustomerID
+WHERE ShipCity!=City
+
+9.CREATE VIEW example
+AS SELECT CategoryName, COUNT(Customers.CustomerID) as amount FROM Categories
+INNER JOIN dbo.Products ON Categories.CategoryID=Products.CategoryID
+INNER JOIN dbo.[Order Details] ON [Order Details].ProductID=Products.ProductID
+INNER JOIN dbo.Orders ON [Order Details].OrderId=Orders.OrderID
+INNER JOIN dbo.Customers ON Customers.CustomerID=Orders.CustomerID
+WHERE YEAR(Orders.OrderDate)=1997 and Customers.Fax is not NULL
+GROUP BY CategoryName
+
+SELECT example.CategoryName FROM example
+WHERE example.amount>=(SELECT MAX(example.amount) FROM example)
+
+10.SELECT Employees.LastName, Employees.FirstName, SUM([Order Details].Quantity) FROM Employees
+INNER JOIN dbo.Orders ON Employees.EmployeeID=Orders.EmployeeID
+INNER JOIN dbo.[Order Details] ON Orders.OrderID=[Order Details].OrderID
+WHERE  Orders.OrderDate>='1996.09.01' and Orders.OrderDate<='1996.11.30'
+GROUP BY Employees.LastName, Employees.FirstName;
