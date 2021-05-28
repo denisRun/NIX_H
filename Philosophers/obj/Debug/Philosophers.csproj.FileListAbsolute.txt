@@ -1,0 +1,7 @@
+D:\nixHome\Philosophers\obj\Debug\Philosophers.csprojAssemblyReference.cache
+D:\nixHome\Philosophers\obj\Debug\Philosophers.csproj.CoreCompileInputs.cache
+D:\nixHome\Philosophers\bin\Debug\Philosophers.exe.config
+D:\nixHome\Philosophers\bin\Debug\Philosophers.exe
+D:\nixHome\Philosophers\bin\Debug\Philosophers.pdb
+D:\nixHome\Philosophers\obj\Debug\Philosophers.exe
+D:\nixHome\Philosophers\obj\Debug\Philosophers.pdb
